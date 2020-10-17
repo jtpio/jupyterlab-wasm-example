@@ -5,7 +5,7 @@ import {
 
 import { ICommandPalette } from '@jupyterlab/apputils';
 
-const { add, open_canvas } = await import('../../rust-example/pkg');
+const { add, open_canvas: openCanvas } = await import('../rust/pkg');
 
 namespace CommandIds {
   export const createCanvas = 'jupyterlab-wasm-example:createCanvas';
@@ -29,7 +29,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     commands.addCommand(CommandIds.createCanvas, {
       label: 'Create the Rust Canvas',
       execute: () => {
-        open_canvas();
+        openCanvas();
       }
     });
 
@@ -43,8 +43,8 @@ const extension: JupyterFrontEndPlugin<void> = {
 
     if (palette) {
       [CommandIds.createCanvas, CommandIds.clearCanvas].forEach(command => {
-      palette.addItem({ command, category: 'WebAssembly' });
-      })
+        palette.addItem({ command, category: 'WebAssembly' });
+      });
     }
   }
 };
