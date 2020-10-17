@@ -19,21 +19,7 @@ pub fn add(a: u32, b: u32) -> u32 {
     res
 }
 
-// Called by our JS entry point to run the example
-#[wasm_bindgen(start)]
-pub fn run() -> Result<(), JsValue> {
-    // This provides better error messages in debug mode.
-    // It's disabled in release mode so it doesn't bloat up the file size.
-    #[cfg(debug_assertions)]
-    console_error_panic_hook::set_once();
-
-    // Your code goes here!
-    console::log_1(&JsValue::from_str("Hello JupyterLab, from Rust!"));
-
-    Ok(())
-}
-
-
+// Inspired by https://github.com/rustwasm/wasm-bindgen/blob/master/examples/paint/src/lib.rs
 #[wasm_bindgen]
 pub fn open_canvas() -> Result<(), JsValue> {
     let document = web_sys::window().unwrap().document().unwrap();
@@ -94,5 +80,14 @@ pub fn open_canvas() -> Result<(), JsValue> {
         closure.forget();
     }
 
+    Ok(())
+}
+
+// entrypoint
+#[wasm_bindgen(start)]
+pub fn run() -> Result<(), JsValue> {
+    #[cfg(debug_assertions)]
+    console_error_panic_hook::set_once();
+    console::log_1(&JsValue::from_str("Hello JupyterLab, from Rust!"));
     Ok(())
 }
