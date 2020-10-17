@@ -4,6 +4,8 @@
 
 Example of a JupyterLab Extension written in Rust and compiled to WebAssembly
 
+![demo](https://user-images.githubusercontent.com/591645/96355103-4f0d7c00-10de-11eb-893e-cf1c4739c3b2.gif)
+
 ## Usage
 
 This repository is meant to be used as an example for extending JupyterLab with WebAssembly modules.
