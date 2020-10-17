@@ -14,16 +14,9 @@ This example uses:
 - [wasm-pack](https://github.com/rustwasm/wasm-pack): build Rust-generated WebAssembly packages and use them from JavaScript
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab) build system, to package everything as an extension that can be installed with `pip`
 
-
 ## Requirements
 
 * JupyterLab >= 3.0
-
-## Install
-
-```bash
-pip install jupyterlab-wasm-example
-```
 
 ## Contributing
 
@@ -38,10 +31,20 @@ The `jlpm` command is JupyterLab's pinned version of
 ```bash
 # Clone the repo to your local environment
 # Change directory to the jupyterlab-wasm-example directory
+
+# create a new environment
+conda create -n jupyterlab-wasm-example -c conda-forge/label/jupyterlab_rc -c conda-forge/label/jupyterlab_server_rc -c conda-forge jupyterlab=3 nodejs python cookiecutter -y
+conda activate jupyterlab-wasm-example
+
+# compile the Rust package to WebAssembly:
+jlpm run build:rust
+
 # Install package in development mode
 pip install -e .
+
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
+
 # Rebuild extension Typescript source after making changes
 jlpm run build
 ```
@@ -56,10 +59,3 @@ jupyter lab
 ```
 
 With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
-
-### Uninstall
-
-```bash
-pip uninstall jupyterlab-wasm-example
-jupyter labextension uninstall jupyterlab-wasm-example
-```
