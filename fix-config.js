@@ -1,7 +1,9 @@
-// monkey patch the base config to support WebAssembly
+// monkey patch the base webpack config to support WebAssembly
 
 const fs = require('fs-extra');
-const p = './node_modules/@jupyterlab/builder/lib/webpack.config.base.js';
+const path = require('path');
+
+const p = path.resolve(__dirname, './node_modules/@jupyterlab/builder/lib/webpack.config.base.js');
 const base = require(p);
 
 if (!base.experiments) {

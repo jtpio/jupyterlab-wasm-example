@@ -1,9 +1,10 @@
 {
-  "author": "You <you@example.com>",
-  "name": "rust-webpack-template",
+  "author": "Jeremy Tuloup",
+  "name": "rust-example",
   "version": "0.1.0",
   "scripts": {
     "build": "rimraf dist pkg && webpack",
+    "build:prod": "wasm-pack build --target release",
     "start": "rimraf dist pkg && webpack-dev-server --open -d",
     "test": "cargo test && wasm-pack test --headless"
   },
