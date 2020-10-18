@@ -28,7 +28,8 @@
     "fix": "node fix-config.js",
     "build": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension:dev",
     "build:prod": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension",
-    "build:rust": "cd rust/ && jlpm run build",
+    "build:rust": "cd rust/ && rimraf dist pkg && webpack",
+    "build:rust:prod": "cd rust/ && wasm-pack build --target release",
     "build:labextension": "jlpm run fix && jupyter labextension build .",
     "build:labextension:dev": "jlpm run fix && jupyter labextension build --development True .",
     "build:lib": "tsc",
@@ -40,6 +41,8 @@
     "eslint:check": "eslint . --ext .ts,.tsx",
     "install:extension": "jupyter labextension develop --overwrite .",
     "prepare": "jlpm run clean && jlpm run build",
+    "start:rust": "cd rust/ && rimraf dist pkg && webpack-dev-server --open -d",
+    "test:rust": "cd rust/ && cargo test && wasm-pack test --headless",
     "watch": "run-p watch:src watch:labextension",
     "watch:src": "tsc -w",
     "watch:labextension": "jupyter labextension watch ."
@@ -51,13 +54,17 @@
     "@jupyterlab/builder": "^3.0.0-rc.5",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
+    "@wasm-tool/wasm-pack-plugin": "^1.1.0",
+    "copy-webpack-plugin": "^5.0.3",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.0",
     "rimraf": "^3.0.2",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.3",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.1"
   },
   "sideEffects": [
     "style/*.css"
