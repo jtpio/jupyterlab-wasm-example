@@ -43,7 +43,7 @@ jlpm run build:rust
 pip install -e .
 
 # Link your development version of the extension with JupyterLab
-jupyter labextension develop . --overwrite
+jlpm run install:extension
 
 # Rebuild extension Typescript source after making changes
 jlpm run build
