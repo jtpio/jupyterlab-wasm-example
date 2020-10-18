@@ -1,0 +1,10 @@
+name: jupyterlab-wasm-example
+channels:
+- conda-forge/label/jupyterlab_rc
+- conda-forge/label/jupyterlab_server_rc
+- conda-forge/label/jupyterlab_widgets_rc
+- conda-forge
+dependencies:
+- jupyterlab=3.0.0rc5
+- nodejs
+- python=3.8
