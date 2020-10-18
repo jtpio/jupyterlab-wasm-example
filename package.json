@@ -27,15 +27,16 @@
   "scripts": {
     "fix": "node fix-config.js",
     "build": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension:dev",
-    "build:prod": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension",
+    "build:prod": "jlpm run build:rust:prod && jlpm run build:lib && jlpm run build:labextension",
     "build:rust": "cd rust/ && rimraf dist pkg && webpack",
     "build:rust:prod": "cd rust/ && wasm-pack build --target release",
     "build:labextension": "jlpm run fix && jupyter labextension build .",
     "build:labextension:dev": "jlpm run fix && jupyter labextension build --development True .",
     "build:lib": "tsc",
-    "clean": "jlpm run clean:lib",
+    "clean": "jlpm run clean:lib && jlpm run clean:rust",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:labextension": "rimraf jupyterlab-wasm-example/static",
+    "clean:rust": "rimraf rust/pkg",
     "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
@@ -63,8 +64,9 @@
     "prettier": "^1.19.0",
     "rimraf": "^3.0.2",
     "typescript": "~4.0.3",
-    "webpack-cli": "^3.3.3",
-    "webpack-dev-server": "^3.7.1"
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "sideEffects": [
     "style/*.css"
