@@ -27,9 +27,8 @@
   "scripts": {
     "fix": "node fix-config.js",
     "build": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension:dev",
-    "build:prod": "jlpm run build:rust:prod && jlpm run build:lib && jlpm run build:labextension",
+    "build:prod": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension",
     "build:rust": "cd rust/ && rimraf dist pkg && webpack",
-    "build:rust:prod": "cd rust/ && wasm-pack build --target release",
     "build:labextension": "jlpm run fix && jupyter labextension build .",
     "build:labextension:dev": "jlpm run fix && jupyter labextension build --development True .",
     "build:lib": "tsc",
