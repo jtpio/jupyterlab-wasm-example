@@ -26,8 +26,8 @@
   },
   "scripts": {
     "fix": "node fix-config.js",
-    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
-    "build:prod": "jlpm run build:lib && jlpm run build:labextension",
+    "build": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:prod": "jlpm run build:rust && jlpm run build:lib && jlpm run build:labextension",
     "build:rust": "cd rust/ && jlpm run build",
     "build:labextension": "jlpm run fix && jupyter labextension build .",
     "build:labextension:dev": "jlpm run fix && jupyter labextension build --development True .",
