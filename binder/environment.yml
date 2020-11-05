@@ -5,6 +5,6 @@ channels:
 - conda-forge/label/jupyterlab_widgets_rc
 - conda-forge
 dependencies:
-- jupyterlab=3.0.0rc5
+- jupyterlab=3.0.0rc7
 - nodejs
 - python=3.8
