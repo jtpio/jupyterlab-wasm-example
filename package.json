@@ -72,6 +72,6 @@
   "jupyterlab": {
     "extension": true,
     "outputDir": "jupyterlab-wasm-example/static",
-    "webpackConfig": "test-config.js"
+    "webpackConfig": "webpack.config.js"
   }
 }
