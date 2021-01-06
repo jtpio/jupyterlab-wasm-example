@@ -17,12 +17,12 @@ name="jupyterlab-wasm-example"
 # Get our version
 version = get_version(os.path.join(name, "_version.py"))
 
-lab_path = os.path.join(HERE, name, "static")
+lab_path = os.path.join(HERE, name, "labextension")
 
 # Representative files that should exist after a successful build
 jstargets = [
     os.path.join(HERE, "lib", "index.js"),
-    os.path.join(HERE, name, "static", "package.json"),
+    os.path.join(HERE, name, "labextension", "package.json"),
 ]
 
 package_data_spec = {
@@ -34,7 +34,7 @@ package_data_spec = {
 labext_name = "jupyterlab-wasm-example"
 
 data_files_spec = [
-    ("share/jupyter/labextensions/%s" % labext_name, lab_path, "*.*"),
+    ("share/jupyter/labextensions/%s" % labext_name, lab_path, "**"),
 ]
 
 cmdclass = create_cmdclass("jsdeps",
@@ -61,7 +61,7 @@ setup_args = dict(
     cmdclass= cmdclass,
     packages=setuptools.find_packages(),
     install_requires=[
-        "jupyterlab>=3.0.0rc7,==3.*",
+        "jupyterlab~=3.0",
     ],
     zip_safe=False,
     include_package_data=True,

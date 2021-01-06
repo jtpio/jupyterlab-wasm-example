@@ -33,7 +33,7 @@
     "build:lib": "tsc",
     "clean": "jlpm run clean:lib && jlpm run clean:rust",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
-    "clean:labextension": "rimraf jupyterlab-wasm-example/static",
+    "clean:labextension": "rimraf jupyterlab-wasm-example/labextension",
     "clean:rust": "rimraf rust/pkg",
     "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
     "eslint": "eslint . --ext .ts,.tsx --fix",
@@ -47,10 +47,10 @@
     "watch:labextension": "jupyter labextension watch ."
   },
   "dependencies": {
-    "@jupyterlab/application": "^3.0.0-rc.7"
+    "@jupyterlab/application": "^3.0.0"
   },
   "devDependencies": {
-    "@jupyterlab/builder": "^3.0.0-rc.7",
+    "@jupyterlab/builder": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "@wasm-tool/wasm-pack-plugin": "^1.1.0",
@@ -71,7 +71,7 @@
   ],
   "jupyterlab": {
     "extension": true,
-    "outputDir": "jupyterlab-wasm-example/static",
+    "outputDir": "jupyterlab-wasm-example/labextension",
     "webpackConfig": "webpack.config.js"
   }
 }
